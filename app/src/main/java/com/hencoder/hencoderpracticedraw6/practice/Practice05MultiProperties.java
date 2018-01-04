@@ -36,9 +36,28 @@ public class Practice05MultiProperties extends ConstraintLayout {
         imageView.setScaleY(0);
         imageView.setAlpha(0f);
         animateBt.setOnClickListener(new OnClickListener() {
+            private int state = 0;
+
             @Override
             public void onClick(View v) {
                 // TODO 在这里处理点击事件，同时对多个属性做动画
+                switch (state) {
+                    case 0:
+                        imageView.animate().scaleX(1);
+                        imageView.animate().scaleY(1);
+                        imageView.animate().rotation(360);
+                        imageView.animate().alpha(255f);
+                        imageView.animate().translationX(500);
+                        break;
+                    case 1:
+                        imageView.animate().scaleX(0);
+                        imageView.animate().scaleY(0);
+                        imageView.animate().alpha(0f);
+                        imageView.animate().rotation(0);
+                        imageView.animate().translationX(0);
+                        break;
+                }
+                state = (++state % 2);
             }
         });
     }

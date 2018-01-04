@@ -34,9 +34,33 @@ public class Practice02Rotation extends RelativeLayout {
         imageView = (ImageView) findViewById(R.id.imageView);
 
         animateBt.setOnClickListener(new OnClickListener() {
+            private int state = 0;
+
             @Override
             public void onClick(final View v) {
                 // // TODO 在这里处理点击事件，通过 View.animate().rotation/X/Y() 来让 View 旋转
+                int degree = 180;
+                switch(state) {
+                    case 0:
+                        imageView.animate().rotation(degree);
+                        break;
+                    case 1:
+                        imageView.animate().rotation(0);
+                        break;
+                    case 2:
+                        imageView.animate().rotationX(degree);
+                        break;
+                    case 3:
+                        imageView.animate().rotationX(0);
+                        break;
+                    case 4:
+                        imageView.animate().rotationY(degree);
+                        break;
+                    case 5:
+                        imageView.animate().rotationY(0);
+                        break;
+                }
+                state = (++state % 6);
             }
         });
     }
